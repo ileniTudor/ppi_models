@@ -19,7 +19,7 @@ class DentalPathologyBot:
             
         Recommended models for 6GB VRAM:
             - "microsoft/Phi-3-mini-4k-instruct" (3.8B params, ~7.5GB download, excellent quality)
-            - "google/gemma-2b-it" (2B params, ~5GB download, good quality)
+            - "google/gemma-2-2b-it" (2B params, ~5GB download, good quality)
             - "TinyLlama/TinyLlama-1.1B-Chat-v1.0" (1.1B params, ~2.2GB download, fast)
         """
         print(f"Loading model: {model_name}...")
