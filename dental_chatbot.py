@@ -7,7 +7,7 @@ from typing import Dict
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-token = "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"
+token = "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"
 
 class DentalPathologyBot:
     def __init__(self, model_name):
