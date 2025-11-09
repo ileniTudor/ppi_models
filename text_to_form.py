@@ -2,7 +2,8 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-token = "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"
+from token_file import token
+
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_compute_dtype=torch.bfloat16,

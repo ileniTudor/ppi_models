@@ -2,13 +2,16 @@ import torch
 from transformers import pipeline
 import librosa
 
+from token_file import token
+
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 print(f"Using device: {device}")
 transcriber = pipeline(
     "automatic-speech-recognition",
     model="openai/whisper-base",
-    device=device
+    device=device,
+    token=token
 )
 print("Model loaded successfully!")
 

@@ -4,7 +4,8 @@ from transformers import AutoTokenizer, AutoProcessor, AutoModelForCausalLM, Bit
 from PIL import Image
 import os
 
-token = "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"
+from token_file import token
+
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_compute_dtype=torch.float16,
