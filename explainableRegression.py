@@ -5,6 +5,15 @@ import shap
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 
+# Sarcina AI: Regresie Explicativă (Explainable Regression) sau Analiza Importanței Caracteristicilor Secvențiale (Sequential Feature Importance Analysis).
+# Modelul AI: Un model bazat pe arbori, cum ar fi XGBoost sau Random Forest.
+# Metodologia "Magică": Ingineria Caracteristicilor Temporale (Lagged Feature Engineering) + SHAP (SHapley Additive exPlanations).
+
+# Unitatea noastră de analiză nu este "pacientul" sau "ciclul", ci "un moment-cadru" (a frame in time).
+# Modelul AI va fi antrenat să răspundă la întrebarea: "Pentru a prezice MR area cm2 la Cadrul t (de ex., Frame 3),
+# care este impactul LA area cm2 la Cadrul t (același timp), și care este impactul LA area cm2 de la Cadrul t-1 (Frame 2)?"
+# Vom folosi aceeași metodologie XGBoost + SHAP
+
 FILE_PATH = "pacienti.csv"
 
 FEATURE_COLUMNS = [
