@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Questins</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+    <title>Questins</title>
+     <script>
+         $(document).ready( function() {
+            $('#submit').click(function() {
+               var formdata = {
+                   "a0": $("#a0").val(), // context
+                   "a1": $("#a1").val()  // query
+               }
+               $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formdata),
+                    dataType: 'json',
+                    url: 'http://127.0.0.1:5000/predict',
+                    success: function (e) {
+                        console.log("success",e.predicted_answer);
+                        $("#response").html(e.predicted_answer);
+                        $("#answer-field").show();
+                        $("#answer-field").css('color', 'green').show();
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        $("#response").html(error.responseText);
+                        $("#answer-field").css('color', 'red').show();
+                    }
+                });
+            });
+         });
+    </script>
+</head>
+    <body>
+        <div >
+            <div class="card" style="width: 800px">
+            <div class="card-content">
+                <div class="media">
+                    <div class="is-size-4 has-text-centered">Question Answering</div>
+                </div>
+                <div class="content">
+
+                <div class="field">
+                    <p class="control">
+                        <label>Context:</label>
+                        <textarea class="textarea" id="a0" rows="4" placeholder="Enter the context text here"></textarea>
+                    </p>
+                </div>
+
+                <div class="field">
+                    <p class="control">
+                        <label>Question:</label>
+                        <input class="input" type="text" placeholder="Enter your question" id="a1">
+                    </p>
+                </div>
+
+                <div class="field">
+                    <button id="submit" class="button is-fullwidth is-rounded is-success">Ask Question</button>
+                </div>
+
+                <div class="field" style="display: none;" id="answer-field">
+                    <p class="control">
+                        <label>Response:</label>
+                        <div id="response" class="box"></div>
+                    </p>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

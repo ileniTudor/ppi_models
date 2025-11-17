@@ -1,0 +1,6 @@
+Flask
+onnxruntime
+numpy
+Pillow
+Werkzeug
+gunicorn

@@ -1,0 +1,7 @@
+Flask
+Flask_Cors
+numpy
+transformers
+datasets
+accelerate
+sentencepiece

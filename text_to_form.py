@@ -35,7 +35,7 @@ form_schema = """
   "aorta ascendenta": "care este dimensiunea in mm a aortei ascendente",
   "aorta la sinusurile vartarda": "care este dimensiunea in mm a la sinusurile vartarda",
   "ventriculul drept ": "care este dimensiunea vertriculului drept",
-  "atriu stâng ": "20 milimetri",
+  "atriu stâng ": "care este dimensiunea atriului stang?",
 }
 """
 if "google/gemma" in model_id:

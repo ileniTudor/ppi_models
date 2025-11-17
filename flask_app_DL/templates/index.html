@@ -1,0 +1,76 @@
+<!doctype html>
+<style>
+  .center {
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  #preview {
+    max-width: 640px;
+    max-height: 640px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+  }
+  h1 {
+    text-align: center;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload Image</title>
+    <script>
+      function handleImageSelect(input) {
+        // Show preview
+        const preview = document.getElementById('preview');
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+
+        // Upload automatically
+        var formData = new FormData(document.getElementById("uploadForm"));
+
+        fetch('/', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            document.getElementById("result").innerText = "Error: " + data.error;
+          } else {
+            document.getElementById("result").innerText = "The uploaded image is a: " + data.label;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById("result").innerText = "An error occurred while processing the image.";
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Upload a photo of a cat or a dog</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*" onchange="handleImageSelect(this)">
+    </form>
+    <p id="result"></p>
+    <img id="preview" alt="Image preview">
+  </body>
+</html>
