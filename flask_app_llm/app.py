@@ -7,8 +7,8 @@ import time
 start_time = time.time()
 model_name = "./lan-t5-base-SQuAD"  # Replace with your model's path or name
 model = T5ForConditionalGeneration.from_pretrained(model_name)
-model = model.to('cuda')
 tokenizer = T5Tokenizer.from_pretrained(model_name)
+model = model.to('cuda')
 load_time = time.time() - start_time
 print(f"Load time: {load_time:.4f} seconds")
 
