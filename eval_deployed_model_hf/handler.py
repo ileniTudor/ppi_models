@@ -1,8 +1,11 @@
-# handler.py
 import os
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
 
+
+# "question":"Which country contains 60% of the rainforest?",
+# "context":"-"
+# What time period did the Industrial Revolution span?
 
 class EndpointHandler:
     def __init__(self, path=""):
