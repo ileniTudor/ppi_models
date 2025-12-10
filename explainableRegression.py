@@ -116,7 +116,7 @@ model = xgb.XGBRegressor(objective='reg:squarederror',
 model.fit(X_train, y_train,
           eval_set=[(X_train, y_train), (X_test, y_test)], # Monitorizam si train si test
             # eval_metric=["rmse"], # Metrica pe care o urmarim explicit
-          verboses=10)
+          verbose=10)
 
 # 1. Facem predicții pe setul de test (date noi, nevăzute)
 y_pred = model.predict(X_test)
